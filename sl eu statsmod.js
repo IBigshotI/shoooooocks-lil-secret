@@ -22,6 +22,7 @@
     };
     async function downloadStatsImage() {
         let canvas = document.createElement('canvas');
+        canvas.id = "statsImage"
         canvas.width = 1920;
         canvas.height = 1080 + (y.size*20);
         let context = canvas.getContext('2d');
@@ -144,14 +145,7 @@
         context.font = 'bold 20px Arial';
         context.fillText('This mod was created by IBigshotI and credits to Pana and Hazard', 10, 70 + (index * 80));
         const delay = ms => new Promise(res => setTimeout(res, 1000));
-        const stats_image = document.createElement('img');
-        stats_image.id = "statsImage";
-        stats_image.src = canvas.toDataURL('image/png');
-        document.body.appendChild(stats_image);
-        let link = document.createElement('a');
-        link.download = 'stats.png';
-        link.href = canvas.toDataURL('image/png').replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-        link.click();
+        document.body.appendChild(canvas)
     }
     function resetStats() {
         y.forEach((player, playerId) => {
