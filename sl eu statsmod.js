@@ -190,6 +190,7 @@
     }
     let downloadButton = document.createElement('button');
     downloadButton.innerHTML = 'Download Stats Image';
+    downloadButton.id = "DownloadButton"
     downloadButton.className = 'ss_button btn_med btn_green bevel_green';
     downloadButton.style.position = 'absolute';
     downloadButton.style.top = '52vh';
