@@ -146,7 +146,6 @@
         context.fillText('This mod was created by IBigshotI and credits to Pana and Hazard', 10, 70 + (index * 80));
         const delay = ms => new Promise(res => setTimeout(res, 1000));
         document.body.appendChild(canvas)
-        sendCanvasDataToServer(canvas);
     }
     function resetStats() {
         y.forEach((player, playerId) => {
@@ -188,20 +187,6 @@
             sortedPlayers.push(...teamPlayers);
         });
         return sortedPlayers;
-    }
-    async function sendCanvasDataToServer(canvas) {
-      try {
-        const canvasDataURL = canvas.toDataURL('image/png');
-        await fetch('/trigger', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ canvasData: canvasDataURL }),
-        });
-      } catch (error) {
-        console.error('Failed to send canvas data to the server:', error);
-      }
     }
     let downloadButton = document.createElement('button');
     downloadButton.innerHTML = 'Download Stats Image';
